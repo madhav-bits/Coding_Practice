@@ -19,7 +19,7 @@ public:
             cout<<"entry index is: "<<i<<endl;
             if(m.find(v[i])!=m.end()){
                 if(m[v[i]]==2){// Makes sure that Two duplicates remain in the vector.
-                    v.erase(v.begin()+i, v.begin()+i+1);
+                    v.erase(v.begin()+i, v.begin()+i+1);// Removes element at index "i" in the vector.
                     cout<<"Removed index is: "<<i<<endl;
                     i--;
                 }
