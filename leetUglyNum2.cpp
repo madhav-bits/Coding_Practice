@@ -19,11 +19,11 @@ public:
         v.push_back(2);
         v.push_back(3);
         v.push_back(5);
-        vector<int> prime(v.size(),0);
+        vector<int> prime(v.size(),0);//Stores the index value of ugly number corresponding to the prime number to be multiplied.
         int count=1;
         int ans=1;
         int ugly[n];
-        ugly[0]=1;
+        ugly[0]=1;//First ugly number is 1.
         if(n==1)
             return 1;
         while(count<n){
