@@ -25,7 +25,7 @@ public:
             int sum=0;
             //int a=n;
             for(int k=0;k<n;k++){
-                sum+=v[(k+n-i)%n]*k;
+                sum+=v[(k+n-i)%n]*k;// Time consuming as array's values are accessed n^2 times. Which needs optimization.
             }
             //arr[i]=sum;
             maxm=max(maxm,sum);
