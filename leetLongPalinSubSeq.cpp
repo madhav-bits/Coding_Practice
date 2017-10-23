@@ -50,5 +50,31 @@ public:
         
           cout<<"The answer is: "<<arr[0][(size-1)]<<endl;
         return arr[0][(size-1)];
+		/*
+		//********************************This part is useful for retracing the palindrome.********************************
+			int a=0, b=size-1;
+			stack<char> st;
+          string ans="";
+		  while(a<=b){
+			if(s[a]==s[b]){
+			  ans+=s[a];
+			  if(a!=b)
+				st.push(s[a]);
+			  a++; b--;
+			}
+			
+			else{
+			  if(arr[a+1][b]>arr[a][b-1])
+				a++;
+			  else
+				b--;
+			}
+		  }
+		  while(!st.empty()){
+			ans+=st.top();
+			st.pop();
+		  }
+			cout<<"The palindrome is: "<<ans<<endl;
+		*/
     }
 };
