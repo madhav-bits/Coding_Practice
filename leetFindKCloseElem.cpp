@@ -15,20 +15,20 @@ The value k is positive and will always be smaller than the length of the sorted
 Length of the given array is positive and will not exceed 104
 Absolute value of elements in the array and x will not exceed 
 
-// *******************************************THIS IS NOT LEET ACCEPTED CODE. BUT CAN'T UNDERSTAND THE REASON FOR DENIAL.*****************
+// *******************************************THIS IS LEET ACCEPTED CODE. ************************************************************
 */
 class Solution {
 public:
     int findIndex(vector<int> v, int begin, int end, int x){
+        //cout<<"begin is: "<<begin<< " and end is: "<<end<<endl;
         int mid=(begin+end)/2, index;
-        
+        if(begin==end && v[begin]!=x)
+            return begin;
         if(v[mid]==x)
             return mid;
-        if(begin+1==end){
-            //int res=abs(v[begin-1]-x)<abs(v[begin]-x)?(begin-1):begin;
-            //res=abs(v[begin+1]-x)<abs(v[res]-x)?(begin+1):res;
+        if(begin+1==end)
             return begin;
-        }
+        
         if(v[mid]<x)
             index=findIndex(v,mid+1, end,x);
         else
@@ -36,18 +36,18 @@ public:
         return index;
     }
     vector<int> findClosestElements(vector<int>& v, int k, int x) {
-        int begin,end=v.size()-1;
+        int begin=0,end=v.size()-1;
         
         int mid=findIndex(v,begin, end,x);
-        //cout<<"Index is: "<<mid<< " and the value is: "<< v[mid]<<endl;
+        cout<<"Index is: "<<mid<< " and the value is: "<< v[mid]<<endl;
         int count=0;
         int start=mid,close=mid+1;
         while(count<k){
-            if(abs(v[start]-x)<=abs(v[close]-x) && start>=begin && close<=(end-1)){
+            if(abs(v[start]-x)<=abs(v[close]-x) && start>=begin && close<=(end)){
                 //cout<<"new count is: "<<count+1<<" with new induct: "<< v[start]<<endl;
                 start--;
             }
-            else if(abs(v[start]-x)>abs(v[close]-x) && close<=(end-1) && start>=begin){
+            else if(abs(v[start]-x)>abs(v[close]-x) && close<=(end) && start>=begin){
                 //cout<<"new count is: "<<count+1<<" with new induct: "<< v[close]<<endl;
                 close++;
             }
@@ -60,12 +60,12 @@ public:
         }
         
         cout<<"start is: "<<v[start]<<" end is: "<<v[close]<<endl;
-        //vector<int> u;
-        for(int i=start+1;i<close;i++){
-            cout<<v[i]<<endl;//u.push_back(v[i]);//int d=v[i];
-        }
+        //vector<int> u;// Copying the result into another vector and returning it.But time taking process.
+        //for(int i=start+1;i<close;i++)// So, skipped it.
+        //    u.push_back(v[i]);//cout<<v[i]<<endl;//int d=v[i];
+        
             
         
-        return vector<int>(v.begin() + start + 1, v.begin() + close);
+        return vector<int>(v.begin() + start + 1, v.begin() + close);// Returning the elements b/w start and end indices.
     }
 };
