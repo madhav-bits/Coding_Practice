@@ -23,7 +23,7 @@ int findIndex(vector<int> v, int target, int begin, int end){
     return mid;
   if(begin<end){
       //cout<<"Inside if condition."<<endl;
-    if((v[begin]<=target && target<=v[mid]) ||  (v[begin]<=target &&  v[begin]>v[mid]) || (target<v[mid] && v[begin]>v[mid]))
+    if((v[begin]<=target && target<v[mid]) ||  (v[begin]<=target &&  v[begin]>v[mid]) || (target<v[mid] && v[begin]>v[mid]))
       a=findIndex(v,target,begin, mid-1);// This is just listing down all possible scnerios for the target to be in the left half-
     else// - of vector.
       a=findIndex(v,target,mid+1, end);
