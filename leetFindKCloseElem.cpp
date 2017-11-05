@@ -22,12 +22,12 @@ public:
     int findIndex(vector<int> v, int begin, int end, int x){
         //cout<<"begin is: "<<begin<< " and end is: "<<end<<endl;
         int mid=(begin+end)/2, index;
-        if(begin==end && v[begin]!=x)
+        if(begin==end && v[begin]!=x)// The case when the target number is not in the given array. Returning the last encountered begin.
             return begin;
-        if(v[mid]==x)
+        if(v[mid]==x)// If target element is encountered, it's index is returned.
             return mid;
-        if(begin+1==end)
-            return begin;
+        if(begin+1==end)// Irrespective of the target elem. being the given array, returning the begin index as begin+1 covers the-
+            return begin;//- next half of the last encountered array subset, which might be the target element.
         
         if(v[mid]<x)
             index=findIndex(v,mid+1, end,x);
