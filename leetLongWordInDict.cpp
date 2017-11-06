@@ -31,17 +31,17 @@ class Solution {
 public:
     string longestWord(vector<string>& v) {
         string s;
-        sort(v.begin(),v.end(),[] (const string& a, const string& b){return a.size()<b.size();});
-        map<string, int> m;
-        for(int i=0;i<v.size();i++)
+        sort(v.begin(),v.end(),[] (const string& a, const string& b){return a.size()<b.size();});// Sortin contents of vec. based-
+        map<string, int> m;//- on lengths and also lexographically as second priority.
+        for(int i=0;i<v.size();i++)// Saving all the words in the Dictionary.
             m[v[i]]=1;
         map<string, int> ::iterator it;
         int maxm= INT_MIN;
         for(it=m.begin();it!=m.end();it++){
             string t=it->first;
             //cout<<"substring considered is: "<<t.substr(0,t.size()-1)<<endl;
-            if(m[t.substr(0,t.size()-1)]>=1 || t.size()==1)
-                it->second=t.size();
+            if(m[t.substr(0,t.size()-1)]>=1 || t.size()==1)// Recording whether a word can be formed from other words(one less
+                it->second=t.size();//-  character from the current)in the dict.
             else
                 it->second=0;
             if(maxm< it->second){
