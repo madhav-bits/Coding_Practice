@@ -1,5 +1,6 @@
 /*
 
+//*********************************************************274. H-Index.*************************************************
 Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher's h-index.
 
 According to the definition of h-index on Wikipedia: "A scientist has index h if h of his/her N papers have at least h citations each, 
@@ -14,8 +15,7 @@ Note: If there are several possible values for h, the maximum one is taken as th
 Credits:
 Special thanks to @jianchao.li.fighter for adding this problem and creating all test cases.
 
-*****************LEET ACCEPTED CODE.**************************************
-*******MIGHT BE SIMPLY SOLVED BY EQUATING THE MIN VALUE TO HINDEX, GIVE IT A TRY.*******************************
+*******************************************************THIS IS LEET ACCEPTED CODE.**************************************
 */
 
 class Solution {
@@ -62,5 +62,23 @@ public:
           }
           cout<<it1->first<<endl;
         return hindex;
+    }
+};
+
+//******************************************** Solution 2. THIS IS A LINEAR TIME SOLUTION.**********************************
+//********************************************FOR BINARY SEARCH SOLUTION REFER TO 275. H-INDEX II PROBLEM.******************
+
+class Solution {
+public:
+    int hIndex(vector<int>& v) {
+		sort(v.begin(), v.end());
+        int hIndex=0, j=1;
+        for(int i=v.size()-1;i>=0;i--){
+            if(v[i]>=j)
+                hIndex=j;
+            j++;
+        }
+        
+        return hIndex;
     }
 };
