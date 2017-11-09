@@ -33,8 +33,8 @@ public:
         while(begin<=end){
             mid=(begin+end)/2;
             j=v.size()-mid;
-            if(v[mid]>=j){
-                hIndex=j;
+            if(v[mid]>=j){// We are actually findng the left most index which satisfies this condition which is the true-
+                hIndex=j;//- h-index, i.e., "other N − h papers have no more than h citations each."
                 end=mid-1;
             }
                 
@@ -55,8 +55,8 @@ public:
         int hIndex=0, j=1;
         
         for(int i=v.size()-1;i>=0;i--){
-            if(v[i]>=j)
-                hIndex=j;
+            if(v[i]>=j)// We are actually findng the left most index which satisfies this condition which is the true-
+                hIndex=j;//- h-index, i.e., "other N − h papers have no more than h citations each."
             j++;
         }
         
