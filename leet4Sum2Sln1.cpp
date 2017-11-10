@@ -7,6 +7,8 @@ To make problem a bit easier, all A, B, C, D have same length of N where 0 ≤ N
 and the 
 result is guaranteed to be at most 231 - 1.
 
+// Time Complexity: O(n^2). In practice takes bit longer.
+// Space Complexity: O(1).
 //*****************************************************THIS IS NOT LEET ACCPETED CODE.*******************************************
 //*************BUT THERE IS NOTHING WRONG WITH THIS CODE. JUST THE FACT THERE IS NOT SPACE COMPROMISED CODE. PERFECTLY WORKS FINE.*********
 */
