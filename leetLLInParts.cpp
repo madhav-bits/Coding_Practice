@@ -77,8 +77,8 @@ public:
                 temp3=temp3->next;// Moving through the new LL's elements.
             }
             if(a<rem){
-                temp3->next=new ListNode(temp2->val);
-                temp2=temp2->next;
+                temp3->next=new ListNode(temp2->val);//Passing an extra val. into new LL rem. no. of times-
+                temp2=temp2->next;//-, as the diff. has to be less than one.
                 
             }
             v.push_back(temp4->next);// Passing from second val. of LL as the first value is zero.
