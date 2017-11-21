@@ -1,0 +1,44 @@
+git clone "https:// link_from _git.com" -- copies the entire repository into the local system.
+
+git init  -- Initialize Local Git Repository in a folder.
+
+git status -- gives the status of the directory(differences in the local directory to the github) from the previous push/ commit.
+
+git add "filename.type"  -- To add this file to the directory(To the staging area).
+
+git add .  -- Add everything to the directory(To the staging area).
+
+git rm --cached "filename.type"   -- Removes the file from the staging area.
+
+git add -A  --Add everything to the directory.  
+
+git commit -m " Text message you want to convey." -- (Still on Machine)Locks the file into Local repository and won't be synced up 
+in the github.com
+
+git push -- Takes any changes on machine(Local Repository) and sync it with github.com(remote repository).
+
+
+git pull -- Pulls content from the github.com,works only when in the correct directory.
+
+
+If got stuck in comd prompt when committed without message- "Type the comment you want to pass onto commit" and Press escape then type ":wq" 
+to go back to the normal cmd prompt.
+
+.gitignore -- This file contains the list of files which won't be staged even 'git add "."' is used.
+
+git branch "branchname" -- creates a branch to the master.
+
+git checkout "branchname" -- Switches to the branchname provided.
+
+git remote -- Displays all the remote repositories we have.
+
+git remote add origin  "Link"  -- Creates a remote repository at this location.
+
+git push -u origin master  -- Pushes the committed changes to the remote repository.
+
+git remote -v -- Shows active remote repositories in this folder.
+
+git remote rm "origin-name"  -- Removes the remote repsitory from GitHub.
+
+
+
