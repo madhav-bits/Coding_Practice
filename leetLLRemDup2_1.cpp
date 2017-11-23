@@ -14,7 +14,8 @@ Given 1->1->1->2->3, return 2->3.
 
 //****************************************************THIS IS LEET ACCEPTED CODE.**********************************************
 */
-//Using Hash Maps, can also be solved in O(1) Time, as the LL is a sorted one.
+//This is done using Hash Maps, can also be solved in O(n) Time, as the LL is a sorted one.
+// The other method is in leetLLRemDup2_2.cpp file. That's done in a single iteration.
 
 /**
  * Definition for singly-linked list.
