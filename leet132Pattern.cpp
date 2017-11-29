@@ -36,6 +36,7 @@ Explanation: There are three 132 patterns in the sequence: [-1, 3, 2], [-1, 3, 0
 //****************************************************THIS IS TRICKY AND TOUGH QUESTION.**************************************
 
 //Solution 1:
+//THIS IS SOLVED USING STACK.
 //This solution approaches the problem from the right side. In the question what is required n1<n3<n2. index of n1<n2<n3. So, we are just-
 //- maintaining the largest two values from the right, So, that it covers all the possible numbers on the left satisfying the above two-
 //- conditions.
