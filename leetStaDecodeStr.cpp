@@ -57,16 +57,12 @@ public:
             else if(s.compare(i,1,"]")==0){
                 //cout<<"top of stack is: "<<u.top()<<" and num is: "<<num.top()<<endl;
                 string y="";
-                for(int i=0;i<num.top();i++)
+                for(int i=0;i<num.top();i++)		// Repeating the Substring as per the question's requirement.
                     y+=u.top();
                 num.pop();
                 if(u.size()>1){						//If this substr. is part of another bracket, then adding this to outer bracket.
                     u.pop();
-                    string d="";
-                    d=u.top();
-                    d+=y;
-                    u.pop();
-                    u.push(d);
+					u.top()+=y;
                 }
                 else{								//If this substr. is not part of another bracket, then direct push to final result.
                     t+=y;
@@ -76,12 +72,8 @@ public:
                 z="";
             }
             else{									// Piling up the substr contents to their related substring bracket.
-                if(u.size()!=0){
-                    z=u.top();
-                    z+=s[i];
-                    u.pop();
-                    u.push(z);
-                }
+                if(u.size()!=0)
+					u.top()+=s[i];
                 else								// If a related substr bracket doesn't exist, just store the char's which we will push-
                     z+=s[i];						// - into final result using the conditon in Line-51.
             }
