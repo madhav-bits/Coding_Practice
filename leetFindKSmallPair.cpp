@@ -59,7 +59,7 @@ public:
         using P = pair<int, pair<int, int>>;
         priority_queue<P, vector<P>, greater<P>> q;
         auto push = [&nums1, &nums2, &q](int i, int j) {        //What does this function actually do?
-            cout<<" inside push with i is: "<<i<<" and j is: "<<j<<endl;
+            //cout<<" inside push with i is: "<<i<<" and j is: "<<j<<endl;
             if (i < nums1.size() && j < nums2.size()) {
                 q.emplace(nums1[i] + nums2[j], make_pair(i, j));
             }
