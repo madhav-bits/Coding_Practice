@@ -58,6 +58,6 @@ public:
             j++;
         }
         a=stol(s);									//Converting the string to integer back.
-        return (a==n || a>INT_MAX)?-1:a;			
+        return (a>INT_MAX)?-1:a;			
     }
 };
