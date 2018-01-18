@@ -100,10 +100,10 @@ public:
         int maxm=INT_MIN;
         for(int i=0;i<N;i++){                                           //Extracing the maxm value forming the "+" sign.
             for(int j=0;j<N;j++){
-                cout<<v[i][j]<<" ";
+                //cout<<v[i][j]<<" ";
                 maxm=max(maxm,v[i][j]);
             }
-            cout<<endl;
+            //cout<<endl;
         }
         //cout<<"The result is: "<<maxm<<endl;
         return maxm;													//Returning the maxm. no. of non-zeros in all drns from an index in array.
