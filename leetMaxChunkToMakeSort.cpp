@@ -47,7 +47,7 @@ arr[i] will be a permutation of [0, 1, ..., arr.length - 1].
 class Solution {
 public:
     int maxChunksToSorted(vector<int>& v) {
-        int result, len=v.size(), count=0, maxm=-1;
+        int len=v.size(), count=0, maxm=-1;
         for(int i=0;i<len;i++){
             if(i==maxm && v[i]<maxm){				//If the mispl. elem. are < curr. index then they can be pushed into subset-
                 maxm=-1;							// as our motive is to get max. #subsets.
