@@ -81,6 +81,7 @@ public:
         for(int i=1;i<=N;i++){
             for(int j=0;j<m;j++){
                 for(int k=0;k<n;k++){
+					v[i% 2][j][k]=0;
                     v[i% 2][j][k]+= (j==0)?1:v[(i-1)% 2][j-1][k];//From Top.//(i-1)%2
                     v[i% 2][j][k]+= (j==m-1)?1:v[(i-1)% 2][j+1][k];//From Bottom.//i%2
                     
