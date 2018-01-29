@@ -1,26 +1,25 @@
 /*
 *
-//****************************************************442. Find All Duplicates in an Array.*********************************************
+//********************************************************73. Set Matrix Zeroes.*************************************************
 
-Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
+Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.
 
-Find all the elements that appear twice in this array.
+click to show follow up.
 
-Could you do it without extra space and in O(n) runtime?
+Follow up:
+Did you use extra space?
+A straight forward solution using O(mn) space is probably a bad idea.
+A simple improvement uses O(m + n) space, but still not the best solution.
+Could you devise a constant space solution?
 
-Example:
-Input:
-[4,3,2,7,8,2,3,1]
 
-Output:
-[2,3]
 
 //These are the examples I had created, tweaked and worked on.
 [[1,1,1],[1,0,1],[1,1,1]]
 
 
 // Time Complexity: O(n*2).
-// Space Complexity: O(n*2).
+// Space Complexity: O(m+n).
 
 //********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
 
@@ -29,7 +28,8 @@ Output:
 
 //************************************************************Solution 1:************************************************************
 // Time Complexity: O(n*2).
-// Space Complexity: O(n*2).
+// Space Complexity: O(m+n).
+//This is the which meets the follow up requirements.
 // This algorithm involves two arrays of lengths #rows and #clmns. Which stores whether are there any zeros in that indexed row and clmn resp.
 // and will reiterate the array and equate the elements to zero, if there is a zero in that elem's row or clmn, which we can know from the two
 // arrays.
