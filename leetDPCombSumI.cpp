@@ -63,7 +63,6 @@ vector<vector<int>> result;
     
     vector<vector<int>> combinationSum(vector<int>& v, int target) {
         if(v.size()==0) return {v};							// If the input vector is empty, no target can be achieved. So, return NULL.
-        vector<vector<int>> result;
         vector<int> dp;
         sort(v.begin(), v.end());							// Sort the input vector, as no duplicates are allowed.
         printCombi(dp,v,target,0);
