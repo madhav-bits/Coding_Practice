@@ -23,8 +23,6 @@ Return 6.
 [10,5,19,1,9,15,29,null, null, null, null,12]
 [10,5,19,1,8,15,29,null, null, null, null,11]
 []
-
-
 [2,5,5,4,6,2,4,-2,-5,-3]
 
 [2,5,5,-4,-6,2,4,-2,-5,-3, 4,11,3,5,6,null,null,null,null,30]
@@ -42,8 +40,8 @@ Return 6.
 //*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
 // Time Complexity: O(n).
 // Space Complexity: O(1).			
-// This algorithm does PreOrderTraversal and calculates the difference b/w consecutively visited nodes and stores the minm. of those differences.
-
+//  This algorithm does Inorder Traversal, then temp. stores the temp. max from that node and child and return it. We check whether the child and
+// the current node form a Max. Path Sum or not.
 
 /**
  * Definition for a binary tree node.
