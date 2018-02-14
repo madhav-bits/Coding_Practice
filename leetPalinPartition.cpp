@@ -23,8 +23,8 @@ Return
 
 
 
-// Time Complexity: O(n^2).
-// Space Complexity: O(n^3).			
+// Time Complexity: O(n!).
+// Space Complexity: O(n*n!).			
 
 //********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
 
@@ -32,8 +32,8 @@ Return
 
 //************************************************************Solution 1:************************************************************
 //*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
-// Time Complexity: O(n^2).
-// Space Complexity: O(n^3).			
+// Time Complexity: O(n!).
+// Space Complexity: O(n*n!).			
 // This algorithm is dfs, 
 // We do a dfs, at each step using isPalindrome function we know whether the substring is palin.. Once we reach the end of string,
 // forming palindromes till then. Then we push all this palindromic substr accumulated in the vector stirng into the final result vector 2D array.
