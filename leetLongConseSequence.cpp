@@ -14,17 +14,9 @@ Your algorithm should run in O(n) complexity.
 //These are the examples I had created, tweaked and worked on.
 
 
-[4,2,6, null,3]
-[4,2,6, null,3,null,7]
-[1]
-[1,null,3]
-[64,56,72,48,60,null,76, null,52,null,null,74,78,50,54]
-[]
-
-
 [100,4,200,1,3,2]
 [100,4,200,1,3,2, 2147483647, 2147483646, 2147483645, 2147483644, 2147483643]
-
+[]
 
 
 
