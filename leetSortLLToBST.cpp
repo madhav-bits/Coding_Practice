@@ -85,7 +85,7 @@ public:
         if(!head) return NULL;
         vector<int> v;
         //ListNode* temp=head;
-        while(head!=NULL){											// Converting LL to Vector.
+        while(head!=NULL){											// Converting Linked List to Vector.
             v.push_back(head->val);
             head=head->next;
         }
