@@ -49,7 +49,7 @@ Answers within 10^-6 of the true value will be accepted as correct.
 class Solution {
 public:
     
-    double length(float ax, float ay, float bx, float by){
+    double length(float ax, float ay, float bx, float by){								// Calc. the length of the side.
         return abs(sqrt(pow(ax-bx,2)+pow(ay-by,2)));
     }
     
