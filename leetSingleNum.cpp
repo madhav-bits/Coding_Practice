@@ -39,8 +39,8 @@ Output: 4
 //*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
 // Time Complexity: O(n).
 // Space Complexity: O(1).	
-// This algorithm is Bitwise Manipulation based. If an integer occurs twice, then those two would cancel out each other in the XOR oper. The integer
-// occuring once wouldn't be cancelled out.So, it remains out.
+// This algorithm is Bitwise Manipulation based. If an integer occurs twice, then those two would cancel out each other in the XOR oper. 
+// The integer occuring once wouldn't be cancelled out.So, it remains out.
 
 
 
