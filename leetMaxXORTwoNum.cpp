@@ -23,7 +23,8 @@ Explanation: The maximum result is 5 ^ 25 = 28.
 //These are the examples I had created, tweaked and worked on.
 
 
-
+[3,12,43,23]
+[22,1,6,86,32,56]
 
 
 
