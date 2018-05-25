@@ -45,7 +45,7 @@ What if elements of nums2 are stored on disk, and the memory is limited such tha
 
 
 
-// Time Complexity: O(n).  
+// Time Complexity: O(nlogn).  
 // Space Complexity: O(1).
 
 //********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
@@ -117,7 +117,7 @@ public:
 
 //************************************************************Solution 2:************************************************************
 //*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
-// Time Complexity: O(n).
+// Time Complexity: O(nlogn).
 // Space Complexity: O(1).	
 // This algorithm sorts the two given vectors. When two iterators show same value, push into final result vector. If not, move the iter. of smaller
 // value to next gretaer value and compare the values of two iter.. Thus, we iterate through entire length of two arrays and push common elem.
