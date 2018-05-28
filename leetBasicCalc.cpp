@@ -39,7 +39,7 @@ Do not use the eval built-in library function.
 
 
 // Time Complexity: O(n).  
-// Space Complexity: O(1).
+// Space Complexity: O(n).
 
 //********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
 
@@ -162,7 +162,7 @@ public:
 //************************************************************Solution 2:************************************************************
 //*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
 // Time Complexity: O(n).
-// Space Complexity: O(1).	
+// Space Complexity: O(n).	
 // This algorithm is stack based. At each step we sum up all values till then, if opeing brace encountered, sum till then is stored in stack and
 // sign before brace is stored in stack. Inside the entire sum is calculated, after the brace the result is added to the previous summation and
 // iterations goes ahead with the updated summation. Thus, at the end of iteration we get the total summation in res-variable.
