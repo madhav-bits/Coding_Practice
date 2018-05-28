@@ -79,7 +79,7 @@ Note: The given binary tree has not more than 10000 nodes. The height of the tre
  * }
  */
 class Solution {
-    int maxPath=0;																// Max. Univalue Path.
+    int maxPath=0;																// Max. Univalue Path. 
     
 	int findPath(TreeNode node){	
         if(node==null) return 0;												// In case of NULL, return 0.
