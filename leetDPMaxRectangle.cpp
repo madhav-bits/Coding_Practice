@@ -29,7 +29,7 @@ Output: 6
 
 
 // Time Complexity: O(n).  
-// Space Complexity: O(1).
+// Space Complexity: O(clmn).
 
 //********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
 
@@ -38,7 +38,7 @@ Output: 6
 //************************************************************Solution 1:************************************************************
 //*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
 // Time Complexity: O(n).
-// Space Complexity: O(1).	
+// Space Complexity: O(clmn).	
 // This algorithm takes it's implementation from Max Rectangle Area in Histogram, we pass each row to max Rect in Hist fn. We iterate through the 
 // rows, we add 1 to those clmns which have "1"s in the same clmn as the prev. one.  If we have "0", we replace that index with "0", thus we create
 // a row which represents 1's in sequence of the rows iterated till now, and pass it to Max Rect in Hist fn.
