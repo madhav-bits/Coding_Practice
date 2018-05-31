@@ -74,7 +74,7 @@ public:
         for(int i=0;i<v.size();i++){
             //cout<<"Inside the for loop with index: "<<i<<" and set size: "<<window.size()<<endl;
             if(i>k) window.erase(v[i-k-1]);												// If window max. size reached, we remove first elem.
-            auto it= window.lower_bound(v[i]-t);										// Searching for first val. >= nums[i]-t
+            auto it= window.lower_bound((long long)v[i]-t);										// Searching for first val. >= nums[i]-t
             //if(it!=window.end()) cout<<"Extracted val. is: "<<*it<<endl;
             if(it!=window.end() && *it-v[i]<=t) return true;							// Check that value is <=t distant from nums[i]
             window.insert(v[i]);														// Inserting the new elem.
