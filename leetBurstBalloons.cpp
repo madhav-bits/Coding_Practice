@@ -50,7 +50,10 @@ Explanation: nums = [3,1,5,8] --> [3,5,8] -->   [3,8]   -->  [8]  --> []
 // and store it in the DP array for the substring. After entire iteration, we return value for dp[0][len-1].
 
 
-
+// Here, dp[start][end] indicates max sum that we can get if balloons from [start+1, end+1] are considered, we do val[last]*val[start]*val[end]
+// as part of innermost loop calc., as when all the balloons in the curr. subarray are bursted, the start and end indices will enclose the last
+// balloon of the curr. subarray. dp[start][last] indicate max. sum that can be obtained from indices[start+1][last-1], similarly dp[last][end]
+// indicates max. sum that can be obtained from indices [last+1][end-1].
 
 
 
