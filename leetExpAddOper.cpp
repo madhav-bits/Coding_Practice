@@ -82,7 +82,7 @@ Output: []
 class Solution {
 public:
     vector<string>ans;
-    void extractSum(string s, int index, string res, long sum,long old, int target){
+    void extractSum(string &s, int index, const string &res, long sum,long old, int target){
         //cout<<"Inside the fn. with index: "<<index<<" with sum: "<<sum<<" with str: "<<res<<endl;
         if(index==s.length()){												// If end of str. is reached.
             // cout<<"Inside the final if condition with index: "<<index<<" with sum: "<<sum<<" with str: "<<res<<endl;
@@ -92,7 +92,8 @@ public:
         for(int i=index;i<s.length();i++){
             long num=stol(s.substr(index,i-index+1));						// Extract num.
             if(i>index && stol(s.substr(index,1))==0) break;				// Avoids dups bec. of consec. "0"s, trailing zeroes.
-            extractSum(s,i+1,res+"*"+to_string(num), sum-old+(old*num),(old*num),target);// Calc. prod and add it, pass the calc. value to fn. 
+            if(num>INT_MAX) break;											// As, we deal only with ints.
+			extractSum(s,i+1,res+"*"+to_string(num), sum-old+(old*num),(old*num),target);// Calc. prod and add it, pass the calc. value to fn. 
             extractSum(s,i+1,res+"+"+to_string(num), sum+num,num,target);	// Add the curr. num to the sum, pass curr. num to next fn.
             extractSum(s,i+1,res+"-"+to_string(num), sum-num,-num,target);	// Sub. the curr. num from the sum, pass curr. num to next fn.
             
@@ -107,7 +108,8 @@ public:
         for(int i=0;i<s.length();i++){
             long num=stol(s.substr(0,i+1));									// Avoid overflows, extract num from substr.
             if(i>0 && stol(s.substr(0,1))==0) break;						// Avoids dups bec. of consec. "0"s, trailing zeroes.
-            extractSum(s,i+1,to_string(num),num,num, target);				// Pass curr. num & Call fn. to extract nums.
+            if(num>INT_MAX) break;											// As, we deal only with ints.
+			extractSum(s,i+1,to_string(num),num,num, target);				// Pass curr. num & Call fn. to extract nums.
         }
         
         return ans;															// Returning the final vector of str of char combinations.
