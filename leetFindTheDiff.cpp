@@ -65,7 +65,7 @@ public:
         for(int i=0;i<s.length();i++){
             if(s[i]!=t[i]) return t[i]; 									// Chars mismatch.So, return t's char.
         }
-        return t[t.length()-1];												// Return the last char. in "t".
+        return t[t.length()-1];												// If diff. char not found, then Return the last char. in "t".
     }
 };
 
