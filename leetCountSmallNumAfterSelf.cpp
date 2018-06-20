@@ -169,3 +169,68 @@ public:
         return res;													// Returning the result vector.
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+//************************************************************Solution 3:************************************************************
+//*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
+// **************************************************THIS IS A CREATIVE ALGORITHM.***********************************************
+// Time Complexity: O(nlogn).						// nlogn to Construct Tree, logn to get the count.
+// Space Complexity: O(m).							// Max. value in array.	
+// This algorithm is Binary Indexed Tree based. We calculate the minm of the contents of the array, inc. the whole array by that value+1, to
+// prevent zero value in BIT. Our BIT's index "i" indicates few #numbers less than "i". Similar to the way, we ask for sum of values in indices 
+// from 0 to 'i' in Range Sum Queries in ordinary BIT, in this BIT, we ask for #numbers less than 'i'.
+
+
+// We modify this problem slightly so that BIT can be used,we construct a BIT of length maxm. value of array's contents,after padding all values
+// with minm. value.(As, BIT involves only positive values).
+
+
+
+
+
+class Solution {
+public:
+    
+    void update(vector<int>&v,int ind){										 
+        while(ind<v.size()){												// Updating index and it's parent's values.
+            v[ind]++;
+            ind+=ind&(-ind);												// Finding parent's index number.
+        }
+    }
+    int getCount(vector<int>&v, int ind){
+        int res=0;
+        while(ind>0){														// Extracts values from all correspoding indices.
+            res+=v[ind];
+            ind-=(ind &(-ind));												// Finding the index number of it's parent.
+        }
+        return res;															// Returns the sum.
+    }
+    
+    vector<int> countSmaller(vector<int>& nums) {
+        vector<int>res;
+        if(nums.size()==0) return res;
+        int minm=INT_MAX;
+        for(int i=0;i<nums.size();i++) minm=min(minm, nums[i]);				// Gets the minm. value of the array.
+        int maxm=INT_MIN;
+        for(int i=0;i<nums.size();i++){
+            nums[i]+=-minm+1;
+            maxm=max(maxm,nums[i]);											// Gets the maxm. value after padding.
+        } 
+        vector<int>bITree(maxm+1,0);										// Construct a Binary Indexed Tree.
+        for(int i=nums.size()-1;i>=0;i--){
+            res.push_back(getCount(bITree, nums[i]-1));						// Extract #nums < curr. value.
+            update(bITree,nums[i]);											// Push curr. value into BIT.
+        }
+        reverse(res.begin(), res.end());									// As, values are accumulated from last to first index. 
+        return res;															// Returning the result vector.
+    }
+};
