@@ -184,7 +184,7 @@ public:
         visited[curr]=1;													// Marking curr. as visited.
         for(auto node:edges[curr]){											// Iterating through adj. nodes.
             if(!visited[node]){												// If a adj. node is un-visited.
-                if(findCycle(node, curr, visited,edges)) return false;		// GO for a recursive call, to traverse the tree
+                if(findCycle(node, curr, visited,edges)) return true;		// GO for a recursive call, to traverse the tree
             }
             else if(node!=prev){											// If pre-visited node is non-parent(prev), then return true.
                 return true;												// Else, take an exception.
