@@ -1,4 +1,19 @@
 package CTCI;
+/*
+
+Implement an algorithm to determine if a string has all unique characters. What if you can not use additional data structures?
+
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+
+*/
+
+
+
+// There are two solutions in the file.
+
 
 public class ArraysStrings1 {
 	static boolean findDup(StringBuffer str){
