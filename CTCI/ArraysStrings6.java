@@ -1,9 +1,11 @@
 package CTCI;
 
+import java.util.Arrays;
 
 /*
  * 
- * 1-7) Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column is set to 0.
+ * 1-6) Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 
+ * degrees. Can you do this in place?
  * 
  * 
  * 
@@ -18,62 +20,36 @@ package CTCI;
 //Space Complexity: O(1).
 
 
-// We mark whether a row/clmn as 0s by setting the start of rows and clmns of that index to 0. So, we need to deal the first row and first 
-// clmn separately, by storing the occurance of 0s in them in two other vars. In the second iteration, we first iterate array except first row 
-// and first clmn, if any of top of clmn/start of row of an index is 0, then set the curr. index to 0. Then,we work on first row and first clmn 
-// based on values of two other vars.
+// We make the swap, 4 way along the different sides of the array. We store the first value in temp array. Then, do a series of copying. We do this
+// until row<len/2. And clmn<len-1-row.
 
 
-
-import java.util.Arrays;
 
 public class ArraysStrings6 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int len=5;
-		int[][]arr= new int[5][5];											// Init. an array.
-		int firstRow=-1, firstClmn=-1;										// Marks whether firstRow/firstClmn has 0 or not?
-		for(int []row:arr)
-			java.util.Arrays.fill(row,1);									// Filling the array with 1's.
-		arr[2][3]=0;
-		arr[1][1]=0;
-		arr[0][4]=0;
-		arr[0][0]=0;
-		//System.out.println("The array: "+Arrays.deepToString(arr));
-		for(int[]row: arr) 
+		int len=4;
+		int [][] v=new int[len][len];
+		v[0][0]=1; v[0][2]=1; v[0][3]=1;v[1][0]=1; v[1][1]=1; v[1][2]=1;v[2][3]=1; v[3][0]=1; v[3][1]=1; v[2][1]=1; v[2][2]=1; v[3][3]=1;
+		for(int[]row:v) 
 			System.out.println(Arrays.toString(row));
-		System.out.println();
-		
 		
 		for(int i=0;i<len;i++) {
-			for(int j=0;j<len;j++) {
-				if(arr[i][j]==0) {
-					if(i==0) firstRow=0;									// If firstRow has 0, then set firstRow=0.
-					else arr[i][0]=0;										// Else, mark start of row as 0.
-					
-					if(j==0) firstClmn=0;									// If firstClmn has 0, then set firstClmn=0.
-					else arr[0][j]=0;										// Else, mark top of clmn as 0.
-					
-				}
+			if(i==len/2) break;
+			System.out.println("The row: "+i);
+			for(int j=i;j<len-i-1;j++) {
+				int temp=v[i][j];							// Temp. storing val at psn 1.
+				v[i][j]=v[len-1-j][i];						// 1 copying 4.
+				v[len-1-j][i]=v[len-1-i][len-1-j];			// 4 copying 3.
+				v[len-1-i][len-1-j]=v[j][len-1-i];			// 3 copying 2.
+				v[j][len-1-i]=temp;					  		// 2 copying 1.
+				
 			}
 		}
-		
-		for(int i=1;i<len;i++) {											// Iterate through entire array except first row and first clmn.
-			for(int j=1;j<len;j++) {
-				if(arr[0][j]==0 || arr[i][0]==0) arr[i][j]=0;				// If either of them is 0, then set curr. index to 0.
-			}
-		}
-		
-		if(firstRow==0) java.util.Arrays.fill(arr[0], 0);					// Working on the first row.
-		if(firstClmn==0) {													// Working on first clmn.
-			for(int i=0;i<len;i++) arr[i][0]=0;
-		}
-		
-		for(int[]row: arr) 													// Prints the array.
+		System.out.println();
+		for(int[]row:v) 
 			System.out.println(Arrays.toString(row));
-		
-		
 	}
 
 }
