@@ -15,13 +15,54 @@ Example:
 Input: (7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 8 -> 0 -> 7
 
-//Solution 3: is accepted.
+
+
+
+*******************************************************************TEST CASES:************************************************************
+//These are the examples I had created, tweaked and worked on.
+
+
+[1]
+[9,9,9,9]
+
+
+[9,9,9,9]
+[1]
+
+
+[1,2,3]
+[]
+
+
+[]
+[1,2,3]
+
+
+
+[]
+[]
+
+
+
+[2,3,4]
+[5,6,7,8,9]
+
+
+
+
+
 //Time Complexity: O(n).
 // Space Complexity: O(n).
 
 //****************************************************THIS IS LEET ACCEPTED CODE.**********************************************
 */
 
+
+
+//************************************************************Solution 1:************************************************************
+//*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
+// Time Complexity: O(n).
+// Space Complexity: O(n).
 
 /**
  * Definition for singly-linked list.
@@ -128,5 +169,101 @@ public:
             return temp5;
         else// If there is no rem. then return from the second elem. of LL. as the first elem. is "0" which is of no value.
          return temp5->next;
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+//************************************************************Solution 2:************************************************************
+//*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
+// Time Complexity: O(n).
+// Space Complexity: O(n).
+// This algo. is iteration based. This is Follow UP of the question. Here, first we calculate the length of two LLs.In the second iteration, we 
+// first travel diff. length in longer LL, then later we also iterate smaller LL along with longer LL, upto the end of both LLs(now they end in 
+// same iteration). We sum the values from longer LL, smaller length LL(if curr. depth>=diff)+carry from the recursive call, we assign the curr.
+// res node, this value and make the result node of recursive call it's next node. We update the carry variable. If at th end of recursive 
+// calls, if we have a carry>0, then we create a new node with this value and the result node of recursive call it's next node.
+
+
+
+
+
+
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* findSum(ListNode* lt, ListNode* rt,int depth, int diff, int &carry){
+        
+        if(lt==NULL) return NULL;											// When both LLs end.
+        // cout<<"Curr. left node: "<<lt->val<<" and right node: "<<rt->val<<endl;
+        ListNode* res;														// Stores root of result LL obtained from recursive call.
+        if(depth>=diff){													// When both LLs have node with same dist. from end(same psn value).
+            res=findSum(lt->next,rt->next,depth+1,diff,carry);
+        }
+        else																// If there is no bit in smaller LL with this psn value.
+            res=findSum(lt->next,rt,depth+1,diff,carry);
+        
+        int sum=lt->val+carry;												// Add, curr. and carry.
+        if(depth>=diff)														// If, smaller LL has node with this psn value.
+            sum+=rt->val;
+        
+        carry=sum/10;														// Calc. carry to be passed onto prev. node.
+        ListNode* temp= new ListNode(sum%10);								// Create node with curr. sum's curr. psn value.
+        temp->next=res;														// Make recurisve call's result, new node's next node.
+        res=temp;															// Make new node the root of the result LL.
+        return res;															// Return root of the result LL.
+    }
+    
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode* temp1=l1, *temp2=l2,*res;
+        int len1=0, len2=0;
+        while(temp1){														// Calc. length of two LLs.
+            len1++;
+            temp1=temp1->next;
+        }
+        while(temp2){
+            len2++;
+            temp2=temp2->next;
+        }
+        temp1=l1; temp2=l2;
+        int carry=0;
+        if(len1>=len2){														// Passing longer LL as first argument to fn.
+            res=findSum(l1,l2,0, len1-len2,carry);
+            if(carry==0) return res;										// If carry =0 for last addn return obtained result.
+            else{															// If carry>0, create new node, make result node the next node of it.
+                ListNode* fin=new ListNode(carry);
+                fin->next=res;
+                return fin;
+            } 
+        }
+            
+        else{
+            res=findSum(l2,l1,0, len2-len1,carry);
+            if(carry==0) return res;
+            else{
+                ListNode* fin=new ListNode(carry);
+                fin->next=res;
+                return fin;
+            }
+        }
+            
     }
 };
