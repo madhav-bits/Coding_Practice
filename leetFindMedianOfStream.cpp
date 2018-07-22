@@ -115,3 +115,71 @@ public:
  * obj.addNum(num);
  * double param_2 = obj.findMedian();
  */
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ //************************************************************Solution 2:************************************************************
+//*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
+// Time Complexity: O(nlogn).
+// Space Complexity: O(n).	
+// This algorithm is Data Structure Utilization based. Here we maintain two Heaps(Max and Min Heaps) Max Heap maintains the lower half of values
+// and Min Heap maitains upper half of values, if arranged in ascending order. If Min Heap and Max Heap differ in size by >1 elem. we shift the
+// top elem. from the larger heap to other heap, thus we maintain the diff. in size in both heaps to 0/1. While calc. median if a heap's size is
+// greater than other one, then just return it's top value(As it will be middle value in asc. order). If both heaps have same size, then calc.
+// avg of two heap's top values.
+ 
+ 
+ 
+ 
+ // Below algo. is same as above one, but it minimizes use of variables to the max, make it look simpler.
+ 
+ 
+ 
+ class MedianFinder {
+public:
+    /** initialize your data structure here. */
+    priority_queue<int,vector<int>,greater<int>>minHeap;
+    priority_queue<int>maxHeap;
+    MedianFinder() {
+        
+    }
+    
+    void addNum(int num) {
+        if(minHeap.size()==0 || num>=minHeap.top()){
+            // cout<<"Num pushed into minHeap: "<<num<<endl;
+            minHeap.push(num);
+        }
+        else maxHeap.push(num);
+        
+        if(minHeap.size()>maxHeap.size()+1){
+            maxHeap.push(minHeap.top());
+            minHeap.pop();
+        }
+        if(maxHeap.size()>minHeap.size()){
+            minHeap.push(maxHeap.top());
+            maxHeap.pop();
+        }
+        
+    }
+    
+    double findMedian() {
+        // cout<<"maxHeap top: "<<maxHeap.top()<<" minHeap top: "<<minHeap.top()<<endl;
+        if(minHeap.size()==maxHeap.size()) return ((double)minHeap.top()+maxHeap.top())/2;
+        else{
+            return minHeap.top();
+        }
+    }
+};
+
+/**
+ * Your MedianFinder object will be instantiated and called as such:
+ * MedianFinder obj = new MedianFinder();
+ * obj.addNum(num);
+ * double param_2 = obj.findMedian();
+ */
