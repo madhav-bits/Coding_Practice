@@ -45,7 +45,7 @@ iterator.next(); // return ' '
 //These are the examples I had created, tweaked and worked on.
 
 
-"L1e2t1C1o1d1e1"															// Not curr. format to give as input though.
+"L1e2t1C1o1d1e1"															// Not correct format to give as input though.
 
 
 "L1e2t1C1o2d1e12"
