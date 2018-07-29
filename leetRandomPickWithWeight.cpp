@@ -58,7 +58,8 @@ no arguments. Arguments are always wrapped with a list, even if there aren't any
 // Space Complexity: O(n).	
 // This algorithm is Uniform distribution based. Since, the random values has to be random proportionate to the weight of index. We calc. cumul.
 // the sum of weights encountered on the path and store it each psn. As, we return random based on weights, if the rand generator returns value,
-// which is between index[i] and index[i+1] or equal to index[i], return index[i+1].
+// which is between index[i] and index[i+1] or equal to index[i], return index[i+1]. For finding first value in cumul. sum array which is 
+// >= target value, we do binary search.
 
 
 
