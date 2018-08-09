@@ -45,7 +45,7 @@ Note:
 */
 
 //************************************************************Solution 1:************************************************************
-//*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
+//*****************************************************THIS IS NOT LEET ACCEPTED CODE.***********************************************
 // Time Complexity: O(n^2*logn).
 // Space Complexity: O(1).	
 // This algorithm is Priority Queue based. We push all possible pairs leading to diff. into priority queue and extract the min. of them, once 
