@@ -34,7 +34,7 @@ Explanation: The maximum number of envelopes you can Russian doll is 3 ([2,3] =>
 
 
 // Time Complexity: O(nlogn).  
-// Space Complexity: O(1).
+// Space Complexity: O(n).
 
 //********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
 
@@ -43,7 +43,7 @@ Explanation: The maximum number of envelopes you can Russian doll is 3 ([2,3] =>
 //************************************************************Solution 1:************************************************************
 //*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
 // Time Complexity: O(nlogn).
-// Space Complexity: O(1).	
+// Space Complexity: O(n).	
 // This algorithm is based on Custom sorting. We sort given values based on inc. widths, if the widths are same, they are sorted in desc. order
 // of their heights. As a result, the answer had become finding Longest Increasing Height(All widths are already sorted). Now, this problem is 
 // entirely same as problem 300) Longest Increasing Subsequence. We use a DP array, where dp[i] indicates the smallest height of all inc. subseq.
