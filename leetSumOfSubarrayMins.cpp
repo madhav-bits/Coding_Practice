@@ -103,8 +103,8 @@ public:
 // left and right vector with curr. index' value and sum them.
 
 
-// By gettting left, right vectors values, we know #substr starting from left of curr. index and have curr. index has minm. value(right[i]),
-// the same applies to #substring starting from right of curr. index. We sum both those combi's values and add it to final result var.
+// By gettting left, right vectors values, we know #substr starting from left of curr. index and have curr. index has minm. value(right[i]).
+// We sum all those combi's values and add it to final result var.
 
 
 
