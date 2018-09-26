@@ -43,12 +43,12 @@ https://www.interviewbit.com/problems/integer-to-roman/
 // Time Complexity: O(1).  
 // Space Complexity: O(1).
 
-//********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
+//********************************************************THIS IS IB ACCEPTED CODE.***************************************************
 
 */
 
 //************************************************************Solution 1:************************************************************
-//*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
+//*****************************************************THIS IS IB ACCEPTED CODE.***********************************************
 // Time Complexity: O(1).
 // Space Complexity: O(1).	
 // This algorithm is iteration based. We iter. from greatest to lowest denom. in sequence. We subtract curr. denom. from num as long it is greater
