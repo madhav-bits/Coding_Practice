@@ -88,3 +88,4 @@ int Solution::solve(int num) {
     }	
     return res;																// Returning the #strings of length 'num' ending with vowels.
 }
+  
