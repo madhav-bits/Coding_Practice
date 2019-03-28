@@ -1,20 +1,20 @@
 /*
 
-//*******************************************************FCTRL - Factorial.***********************************************************
-https://www.spoj.com/problems/FCTRL/
+//**************************************************BSHEEP - Build the Fence.********************************************************
+https://www.spoj.com/problems/BSHEEP/
 
 
 
 
-Time Complexity:O(logn/log5).                                                                                                                                                                                             
-Space Complexity:O(1).                                                      
+Time Complexity:O(nlogn).                                                                                                                                                                                             
+Space Complexity:O(n).                                                      
 
 */
 
 
 //***********************************************************Solution 1.*************************************************************
-// Time Complexity:O(logn/log5).                                                  
-// Space Complexity:O(1).                                                   
+// Time Complexity:O(nlogn).                                                  
+// Space Complexity:O(n).                                                   
 // This is Monotone Chain's algo. It's fails when submitted, but works fine for all test cases in SPOJ toolkit, looks entirely 
 // similar to some referred code in git. Don't know why?
 
