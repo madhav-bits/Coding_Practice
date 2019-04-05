@@ -151,9 +151,9 @@ public:
     vector<double> calcEquation(vector<pair<string, string>> eq, vector<double>& val, vector<pair<string, string>> quer) {
         vector<double> res;
         map<string, double>m, pres, occur;
-        queue<vector<string>> q;															// Stores pairs to resolved/assigned values later.
+        queue<vector<string>> q;															// Stores pairs to resolved/ assigned values later.
         for(int i=0;i<val.size();i++){
-            pres[eq[i].first]+=1; pres[eq[i].second]+=1;									
+            pres[eq[i].first]+=1; pres[eq[i].second]+=1;
             occur[eq[i].first]+=1; occur[eq[i].second]+=1;									// Keeps track of no. of occurances of node.
             
         }
@@ -213,3 +213,97 @@ public:
         return res;
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//************************************************************Solution 3:************************************************************
+//*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
+// Time Complexity: O(n+elogn).												//  Since, we only done path compression, query would take logn time.
+// Space Complexity: O(n).	Edges=N^2
+// This is Union-Find solution. Where, node is numerator and parent is the denominator where vals array stores value that child is greater than 
+// parent node. child val=parent node*vals[child]
+// Here, the cost of a node to it's core-parent is re-evaluted while making path compression while searching for core-parent of a 
+// node(getParent function).
+
+
+
+
+
+
+
+class Solution {
+public:
+    
+    
+    string getParent(unordered_map<string,string>&parent, unordered_map<string,double>&vals, string node){
+        if(parent[node]==node) return node;
+        string par=parent[node];
+        parent[node]=getParent(parent, vals, parent[node]);
+        vals[node]=vals[node]*vals[par];
+        return parent[node];
+    }
+    
+    vector<double> calcEquation(vector<pair<string, string>> v, vector<double>& u, vector<pair<string, string>> queries) {
+        vector<double>res;
+        unordered_map<string,string>parent;
+        unordered_map<string,double>vals;
+        for(int i=0;i<v.size();i++){
+            if(parent.count(v[i].first)==0){
+                parent[v[i].first]=v[i].first;
+                vals[v[i].first]=1;
+            }
+            if(parent.count(v[i].second)==0){
+                parent[v[i].second]=v[i].second;
+                vals[v[i].second]=1;
+            }
+            string parA=getParent(parent, vals, v[i].first);
+            string parB=getParent(parent, vals, v[i].second);
+            parent[parA]=parB;
+            vals[parA]=vals[v[i].second]*u[i]/vals[v[i].first];
+        }
+        
+        for(int i=0;i<queries.size();i++){
+            if(parent.count(queries[i].first)==0 || parent.count(queries[i].second)==0){
+                res.push_back(-1.0);
+                continue;
+            }
+            string parA=getParent(parent, vals, queries[i].first);
+            string parB=getParent(parent, vals, queries[i].second);
+            if(parA!=parB){
+                res.push_back(-1.0);
+                continue;
+            }
+            // cout<<"number: "<<vals[queries[i].first]<<" and denom: "<<vals[queries[i].second]<<endl;
+            res.push_back(vals[queries[i].first]/vals[queries[i].second]);
+        }
+        return res;
+    }
+};
+
+
+/*
+
+
+[ ["a","b"],["b","c"],["c","a"] ]
+[2.0,3.0,1.0]
+[ ["a","c"],["b","c"],["a","e"],["a","a"],["x","x"] ]
+
+
+
+[ ["a","b"],["b","c"] ]
+[2.0,3.0]
+[ ["a","c"],["b","c"],["a","e"],["a","a"],["x","x"] ]
+
+*/
