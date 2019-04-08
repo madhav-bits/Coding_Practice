@@ -61,7 +61,8 @@ In calls to MyCalendarThree.book(start, end), start and end are integers in the 
 // Space Complexity: O(n).	
 // This algorithm is Segment Tree based, but more easily done through HashMap. We store the edges of intervals in the map, where start of 
 // the interval is indicated by inc. the value for that key by 1.End of interval by dec. the value for that key by 1. For every insert the 
-// interval, we then count of number of active intervals for all the edges stored in map. We track the max #active intervals and return the max. num.
+// interval, we then count of number of active intervals for all the edges stored in map. We track the max #active intervals and return the 
+// max. num.
 
 
 
