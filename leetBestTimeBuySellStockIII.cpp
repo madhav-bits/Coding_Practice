@@ -121,3 +121,56 @@ public:
         return sell[1];														// Return the max. profit after 2 transactions in given days.
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+//********************************************************Solution 3:*******************************************************
+//**************************************************THIS IS LEET ACCEPTED CODE.********************************************
+// Time Complexity: O(2*n).
+// Space Complexity: O(n).	
+// This algorithm is Memoization based solution. Here, since we need atmost two transactions, we keep track of single 
+// transactions done from both the ends, at leftMax[i] we store the maxm transaction possible till index-i, similary 
+// rightMax[i] indicates maxm value transaction that could have happened starting index-i. We assign the maxm. of the 
+// two values to the res var. In the third iteration, we iter. over entire array and sum up leftMax[i]+rightMax[i+1] and
+// try to maximize the result value.
+
+
+
+
+
+
+class Solution {
+public:
+    int maxProfit(vector<int>& v) {
+        
+        if(v.size()<=1) return 0;
+        vector<int>leftMax(v.size(),0), rightMax(v.size(),0);
+        int minm=v[0], maxm=0;
+        for(int i=1;i<v.size();i++){
+            maxm=max(maxm, v[i]-minm);
+            leftMax[i]=maxm;
+            minm=min(minm,v[i]);
+        }
+        int res=maxm;
+        int sell=v.back();maxm=0;
+        for(int i=v.size()-2;i>=0;i--){
+            maxm=max(maxm, sell-v[i]);
+            rightMax[i]=maxm;
+            sell=max(sell,v[i]);
+        }
+        res=max(res, maxm);
+        for(int i=0;i<v.size()-1;i++){
+            res=max(res, leftMax[i]+rightMax[i+1]);		// Adding the maxm. transaction upto "i" and maxm. trans from "i+1".
+        }
+        return res;
+    }
+};
