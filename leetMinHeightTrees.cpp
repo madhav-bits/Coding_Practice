@@ -68,6 +68,11 @@ Special thanks to @dietpepsi for adding this problem and creating all test cases
 [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]
 
 
+4
+[[1,0],[1,2],[1,3]]
+
+
+
 // Time Complexity: O(Edges).
 // Space Complexity: O(Edges).	Edges= Nodes-1.
 
@@ -121,3 +126,85 @@ public:
         return leaves;															// Returning the root nodes, which gives min height.
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+//************************************************************Solution 2:************************************************************
+//*****************************************************THIS IS NOT LEET ACCEPTED CODE.***********************************************
+// Time Complexity: O(Edges*Edges).
+// Space Complexity: O(Edges).	Edges= Nodes-1.
+// This algorithm is BFS BASED solution. Here, since we need nodes, which split tree with minm. height, it's dist. when calculated
+// from all leaves, maxm of them will be minm. among all the nodes present in the tree. We maintain an array which tracks maxm possible
+// dist. from of that node to all leaves. For this we perform BFS from all edges, this takes O(Edges*Edges) times. That's the reason
+// it fails on the last test case.
+
+
+
+
+
+
+
+class Solution {
+public:
+    
+    void iterateTree(int node, vector<int>&dist, vector<vector<int>>&graph){
+        vector<bool>visited(dist.size(), false);							// Prevents revisiting the nodes.
+        queue<int>q;
+        q.push(node);
+        int steps=-1;
+        while(!q.empty()){
+            steps++;
+            int len=q.size();
+            for(int i=0;i<len;i++){
+                int node=q.front();
+                visited[node]=true;
+                dist[node]=max(dist[node], steps);							// Tracking maxm dist from each node to all leaves.
+                q.pop();
+                for(auto adj: graph[node]){
+                    if(visited[adj]) continue;
+                    q.push(adj);
+                }
+            }
+        }
+        return;
+    }
+    
+    vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
+        vector<vector<int>>graph(n);
+        vector<int>res;
+        for(int i=0;i<edges.size();i++){
+            int node1=edges[i][0], node2=edges[i][1];
+            graph[node1].push_back(node2);
+            graph[node2].push_back(node1);
+        }
+        int start=-1, node=0;
+        vector<int>dist(n, 0);
+        for(int i=0;i<n;i++){
+            if(graph[i].size()==1) iterateTree(i, dist, graph);    // Starting BFS from all leaves.
+        }
+        
+        // cout<<"yo"<<endl;
+        int minm=n;
+        for(int i=0;i<n;i++){										// Calc. minm. dist among all nodes. 
+            if(dist[i]<minm) minm=dist[i];
+        }
+        for(int i=0;i<n;i++){
+            if(dist[i]==minm) res.push_back(i);						// Collecting nodes with minm. dist.
+        }
+        return res;
+    }
+};
+
+
+
+
+
+
