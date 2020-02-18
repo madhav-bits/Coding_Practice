@@ -1,4 +1,10 @@
 /*
+//**********************************************************************************************************************************
+//*****************************************************397. Integer Replacement*****************************************************
+//**********************************************************************************************************************************
+
+
+
 Given a positive integer n and you can do operations as follow:
 
 If n is even, replace n with n/2.
@@ -28,11 +34,44 @@ Explanation:
 or
 7 -> 6 -> 3 -> 2 -> 1
 
+
+
+Test Cases: 
+
+
+
+
+
+
+8
+
+120
+
+2131
+
+7
+
+2147483647
+
+
+
+
+
+
 //**************************************************THIS IS LEET ACCEPTED CODE.************************************************
 */
-
+//*********************************************************Solution 1.*********************************************************
+// Time Complexity: (2^16).													// If every alternate bit is set.
+// Space Complexity: O(1).
 // This is a Dynamic Programming mode. This version using the recursion as lot of memeory is used and lot of memory accesses are done
 // in case of large input values.
+
+
+
+
+
+
+
 
 class Solution {
 public:
@@ -84,3 +123,51 @@ public:
 };
 
 */
+
+
+
+
+
+
+
+
+
+
+
+//*********************************************************Solution 2.*********************************************************
+//**************************************************THIS IS LEET ACCEPTED CODE.************************************************
+// Time Complexity: O(1).
+// Space Complexity: O(1).
+// This solution is Bit Manipulation based. Here, since we need minm. steps, we divide by 2, whenever the num is div. by 2. Else,
+// if the second LSB is 0/ num is 3 by then, we dec. the value by 1, if the second LSB is!=0, inc. the num by 1. Keep track of the 
+// number of steps taken and return them. Here, in each step we are trying to decrease the number.
+
+
+
+
+
+
+
+class Solution {
+public:
+    int integerReplacement(int m) {
+        int res=0;
+        long long int n=m;													// To avoid integer overflows.
+        bool seq=false;
+        while(n>1){
+            // cout<<bitset<16>(n)<<endl;
+            int digit=(n&1);												// Extracting the LSB.
+            if(digit==0){													// If it is zero, remove it.
+                n>>=1;
+            }else{															// If it is one.
+                if(n==3 || ((n&2)==0)) n-=1;								// If the second LSB is 0/ num is 3 dec. by 1.
+                else n+=1;													// If the second LSB is not zero, inc. num by one.
+            }
+            res++;															// Inc. the number of steps taken.
+            
+        }
+        return res;															// Return the number of steps taken.
+    }
+};
+
+
