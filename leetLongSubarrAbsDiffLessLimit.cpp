@@ -65,8 +65,8 @@ Constraints:
 
 
 
-// Time Complexity: O(n!).  
-// Space Complexity: O(n*n!).
+// Time Complexity: O(n).  
+// Space Complexity: O(n).
 
 //********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
 
@@ -74,10 +74,14 @@ Constraints:
 
 //************************************************************Solution 1:************************************************************
 //*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
-// Time Complexity: O(n!).
-// Space Complexity: O(n*n!).	
-// This algorithm is Stack based solution. Here, since we want the substring elem. max. diff to be <=limit. We maintain two stacks
-// one maintains that maxm. values in the substring, other maintains minm. If curr. num's diff with maxm/minm
+// Time Complexity: O(n).
+// Space Complexity: O(n).	
+// This algorithm is Stack based solution. Here, since we want the substring elem. max. diff to be <=limit. We maintain two deques
+// one maintains the maxm. values in the substring, other maintains minm. If curr. num's diff with maxm/minm is >limit, we start
+// removing values from maxQueue/minQueue until the top value diff. with curr. num is within limit, in the process we also have remove 
+// nodes from the other stack as they might be out of substring. After removing dist. values from the deques. We update the deques
+// with curr. num and remove all values which are less/ more than it's values in maxQueue/minQueue respectively. We update the max.
+// substring len with curr. substr len.
 
 
 
@@ -114,43 +118,63 @@ public:
             res=max(res, close-start+1);
         }
         return res;
-        
-        
-        
-        // int minIndex=0, maxIndex=0, res=1;
-        // int start=0, close=0, lt=0;
-        // for(int i=1;i<(int)v.size();i++){
-        //     if(abs(v[maxIndex]-v[i])>limit){
-        //         maxIndex++;
-        //         lt=max(lt, maxIndex);
-        //         for(int j=lt;j<i;j++){
-        //             if(v[j]>v[maxIndex]) maxIndex=j;
-        //             if(abs(v[j]-v[i])>limit){
-        //                 lt=max(lt, j+1);
-        //                 maxIndex=j+1;
-        //             }
-        //         }
-        //     }
-            
-        //     if(abs(v[minIndex]-v[i])>limit){
-        //         minIndex++;
-        //         lt=max(lt, minIndex);
-        //         for(int j=lt;j<i;j++){
-        //             if(v[j]<v[minIndex]) minIndex=j;
-        //             if(abs(v[j]-v[i])>limit){
-        //                 lt=max(lt, j+1);
-        //                 minIndex=j+1;
-        //             }
-        //         }
-        //     }
-            
-        //     minIndex=(v[i]<v[minIndex])?i:minIndex;
-        //     maxIndex=(v[i]>v[maxIndex])?i:maxIndex;
-        //     res=max(res, i-lt+1);
-        // }
-        // return res;
     }
 };
 
 
 
+
+
+
+
+
+
+//************************************************************Solution 2:************************************************************
+//*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
+// Time Complexity: O(n^2).
+// Space Complexity: O(1).
+// This is another solution without using Dequeus. This looks simple, but it indirectly covers many possibilities and maintains
+// subarray acc. to requirements.
+
+
+
+
+
+
+class Solution {
+public:
+    int longestSubarray(vector<int>& v, int limit) {
+        int minIndex=0, maxIndex=0, res=1;
+        int start=0, close=0, lt=0;
+        for(int i=1;i<(int)v.size();i++){
+            if(abs(v[maxIndex]-v[i])>limit){
+                maxIndex++;
+                lt=max(lt, maxIndex);
+                for(int j=lt;j<i;j++){                                   // Updating maxIndex by iter. subarray.
+                    if(v[j]>v[maxIndex]) maxIndex=j;
+                    if(abs(v[j]-v[i])>limit){                            // Shortening subarray based one extremes.
+                        lt=max(lt, j+1);                                 // Do need to update minIndex as maxm, minm values manage this and make sure values are consistent acc. to requirement.
+                        maxIndex=j+1;
+                    }
+                }
+            }
+            
+            if(abs(v[minIndex]-v[i])>limit){
+                minIndex++;
+                lt=max(lt, minIndex);
+                for(int j=lt;j<i;j++){
+                    if(v[j]<v[minIndex]) minIndex=j;
+                    if(abs(v[j]-v[i])>limit){
+                        lt=max(lt, j+1);
+                        minIndex=j+1;
+                    }
+                }
+            }
+            
+            minIndex=(v[i]<v[minIndex])?i:minIndex;
+            maxIndex=(v[i]>v[maxIndex])?i:maxIndex;
+            res=max(res, i-lt+1);
+        }
+        return res;
+    }
+};
