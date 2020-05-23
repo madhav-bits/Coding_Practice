@@ -53,8 +53,8 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     
-    // ifstream cin;
-    // cin.open("F:\\Masters\\Coding_Practice\\CPP\\SPOJ\\testFile.txt");
+    ifstream cin;
+    cin.open("F:\\Masters\\Coding_Practice\\CPP\\SPOJ\\testFile.txt");
 
     int cols, moments;
     cin>>cols>>moments;
