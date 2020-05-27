@@ -1,6 +1,6 @@
 /*
 *
-//**************************************************************970. Powerful Integers.*******************************************************
+//**********************************************************970. Powerful Integers.***************************************************
 
 Given two non-negative integers x and y, an integer is powerful if it is equal to x^i + y^j for some integers i >= 0 and j >= 0.
 
@@ -60,12 +60,15 @@ Note:
 1
 4
 
+3
+5
+15
 
 
 
 
 // Time Complexity: O((logl/logm)*(logl/logn)).
-// Space Complexity: O(l).	
+// Space Complexity: O((logl/logm)*(logl/logn)).							// If all generated num's totals are unique.		
 
 //********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
 
@@ -74,7 +77,7 @@ Note:
 //************************************************************Solution 1:************************************************************
 //*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
 // Time Complexity: O((logl/logm)*(logl/logn)).
-// Space Complexity: O(l).														
+// Space Complexity: O((logl/logm)*(logl/logn)).							// If all generated num's totals are unique.										
 // This algorithm is backtracking based. Here, we iterate over all possible powers values for both integers whose value<target value. And check
 // whether their sum <=target value. If it's less then, push it into a set. At the end of process, push the set values into vector and return.
 // We use set, as there are different combinations of powers whose sum lead to same total, so to avoid duplicate sums, we use set. We also track
@@ -111,3 +114,46 @@ public:
         return res;															// Returning the final list of unique sum values.
     }
 };
+
+
+
+
+
+
+
+//************************************************************Solution 2:************************************************************
+//*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
+// Time Complexity: O((logl/logm)*(logl/logn)).
+// Space Complexity: O((logl/logm)*(logl/logn)).							// If all generated num's totals are unique.		
+// This algorithm is similar to above algorithm, it is simpler and easier to understand. I had prevented infi. loops by using x==1
+// and y==1 condition. Instead of using pow function we use b*=y to increase the value of the second value in the pair. We used 
+// unordered_set to prevent duplicates and pushed them into vector at the end of process and returned the vector.
+
+
+
+
+ 
+
+
+
+class Solution {
+public:
+    vector<int> powerfulIntegers(int x, int y, int bound) {
+        unordered_set<int>st;												// Prevents duplicate sum of pair entries.
+        int a=1, b=1;														// Init. the pair values.
+        while(a<bound){
+            b=1;
+            while(a+b<=bound){
+                st.insert(a+b);
+                if(y==1) break;												// Prevents infi. loops in case of x=1.
+                b*=y;														// Inc. the second value in the pair.
+            }
+            if(x==1) break;													// Prevents infi. loops in case of y=1.
+            a*=x;															// Inc. the first value in the pair.
+        }
+        vector<int>res(st.begin(),st.end());								// Init. vector with set's contents.
+        return res;															// Returning the vector.
+    }
+};
+
+
