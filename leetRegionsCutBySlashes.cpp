@@ -93,8 +93,8 @@ grid[i][j] is either '/', '\', or ' '.
 
 
 
-// Time Complexity: O(n*n).  
-// Space Complexity: O(n*n).
+// Time Complexity: O(n*n).													// Time Complexity in precise: (n*n*4).
+// Space Complexity: O(n*n).												// Space Complexity in precise: (n*n*4).	
 
 //********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
 
@@ -102,15 +102,15 @@ grid[i][j] is either '/', '\', or ' '.
 
 //************************************************************Solution 1:************************************************************
 //*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
-// Time Complexity: O(n*n).
-// Space Complexity: O(n*n).	
+// Time Complexity: O(n*n).													// Time Complexity in precise: (n*n*9).
+// Space Complexity: O(n*n).												// Space Complexity in precise: (n*n*9).
 // This algorithm is DFS based. Here, we have to find #groups. As splitted each index is smaller to consider, we upscale it to n*n*9.
 // Based on '/' or '\' we mask the diagonal indices from TR to BL or TL to BR respectively. Now, we iter. over this upscaled matrix
 // using DFS and color all indices which are visited. Inc. the cnt of groups at the start of each DFS call. We return the cnt at the
 // end of iteration.
 
 
-
+// These two solutions are from Leetcode discussion forum posts. There are few other good solutions to this question in the forum.
 
 
 
@@ -154,4 +154,76 @@ public:
     }
 };
 
+
+
+
+
+
+
+
+
+
+
+//************************************************************Solution 2:************************************************************
+//*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
+// Time Complexity: O(n*n).													// Time Complexity in precise: (n*n*4).
+// Space Complexity: O(n*n).												// Space Complexity in precise: (n*n*4).	
+// This algorithm is DFS based. Here, we have to find #groups. As splitted each index is smaller to consider, we upscale the matrix
+// by considering each of the four possible divisions as different indices in n*n*4 matrix, where Top-0, Right-1,Bottom-2, Left-3.
+// Now, we iter. over upscaled matrix and start DFS whenever a index is not colored and inc. the cnt of groups. In the DFS, we pick
+// indices to move to adj. orig. matrix indices. We also make decisions to move to adj. 4 revised indices based on the char in that index.
+
+
+
+
+
+
+
+
+
+class Solution {
+public:
+    int v[31][31][4];
+    int rows;
+    
+    void dfs(int row, int col, int psn, vector<string>&grid){
+        if (row < 0 || col < 0 || row >= rows || col >= rows || v[row][col][psn]==1) return ;
+        v[row][col][psn]=1;
+        if(psn==0) dfs(row-1, col, 2, grid);								// Moving to adj. indices of orig. array.
+        if(psn==1) dfs(row, col+1, 3, grid);
+        if(psn==2) dfs(row+1, col, 0, grid);
+        if(psn==3) dfs(row, col-1, 1, grid);
+        
+        if(grid[row][col]!='\\'){											// Moving to adj. upscaled 4 indices based on chars.
+            if(psn==0) dfs(row, col, 3, grid);
+            if(psn==1) dfs(row, col, 2, grid);
+            if(psn==2) dfs(row, col, 1, grid);
+            if(psn==3) dfs(row, col, 0, grid);
+        }
+        if(grid[row][col]!='/'){											// Moving to adj. upscaled 4 indices based on chars.
+            if(psn==0) dfs(row, col, 1, grid);
+            if(psn==1) dfs(row, col, 0, grid);
+            if(psn==2) dfs(row, col, 3, grid);
+            if(psn==3) dfs(row, col, 2, grid);
+        }
+        return ;
+    }
+    
+    int regionsBySlashes(vector<string>& grid) {
+        
+        int res=0;
+        rows=grid.size();
+        memset(v,0,sizeof(v));
+        for(int i=0;i<grid.size();i++){										// Iter. over upscaled matrix.
+            for(int j=0;j<grid.size();j++){
+                for(int k=0;k<4;k++){
+                    if(v[i][j][k]==1) continue;								// If visited skip it.
+                    res++;													// Inc. the #groups count.
+                    dfs(i,j,k, grid);
+                }
+            }
+        }
+        return res;															// Returning the total #groups.
+    }
+};
 
