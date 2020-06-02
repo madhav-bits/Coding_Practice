@@ -22,6 +22,34 @@ Note: N is an integer in the range [0, 10^9].
 233332, 3356 10.
 
 
+10
+
+332
+
+99799
+
+567389
+
+
+5674573
+
+57143
+2341
+1234
+357143
+789289
+99799
+12743
+1232
+56684
+88888
+7798
+7796
+8887
+668841
+
+
+
 // Time Complexity: O(n).
 // Space Complexity: O(1).
 
@@ -31,6 +59,7 @@ Note: N is an integer in the range [0, 10^9].
 
 
 //************************************************************Solution 1:************************************************************
+//********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
 // Time Complexity: O(n).
 // Space Complexity: O(1).
 //The algorithm is to find the first occurence where an digit is less than prev. digit. Then replacing all digits following that by "9"
@@ -69,5 +98,47 @@ public:
       }
         
       return stoi(s);
+    }
+};
+
+
+
+
+
+
+
+
+
+
+//************************************************************Solution 2:************************************************************
+//********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
+// Time Complexity: O(n).
+// Space Complexity: O(1).
+// The algorithm is observation based. Here, we are trying to find index where we have to decrease the value and assign all the right
+// side indices to '9'. One exception we see is cases like 88886, where the first change index and it's left index will be having same
+// value, so their values would be affected, we first the last 8s value to 7, thus the first change index would be 0 and a result the 
+// changed num. to 79999
+
+
+
+
+
+
+
+
+
+class Solution {
+public:
+    int monotoneIncreasingDigits(int N) {
+        string res=to_string(N);											// Init. the final result string.
+        int marker=res.length();											// Tracks first index to be changed.
+        for(int i=res.length()-1;i>0;i--){									// Iter. in reverse order.
+            if(res[i-1]>res[i]){											// If values decrease.
+                marker=i;													// Mark the index to start changing to '9'.
+                res[i-1]--;													// Dec. the first change index value by 1.
+            }																// Using above step we can also find the prev. indices with same val.
+        }
+        for(int i=marker;i<res.length();i++) res[i]='9';					// Changing the val. to '9' starting marker index.
+        return stoi(res);													// Convert result str to int and return.
     }
 };
