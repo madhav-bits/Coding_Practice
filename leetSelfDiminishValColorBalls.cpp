@@ -100,6 +100,14 @@ Constraints:
 
 
 
+// These are some links with good explanation of this approach.
+// https://leetcode.com/problems/sell-diminishing-valued-colored-balls/discuss/927716/C%2B%2B-O(n-log-n)
+// https://leetcode.com/problems/sell-diminishing-valued-colored-balls/discuss/927509/Java-O(NlogN)-or-Detailed-Explanation-or-Runtime-Beats-100
+
+
+
+
+
 
 
 
