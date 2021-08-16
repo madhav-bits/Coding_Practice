@@ -35,6 +35,24 @@ Both start and end will only consist of characters in {'L', 'R', 'X'}.
 "XXLXXLRX"
 "LXLXXXXR"
 
+"RXXLXLLXRX"
+"RLXXXLXLRX"
+"RXXLRXRXL"
+"XRLXXRRLX"
+"X"
+"L"
+"XLLR"
+"LXLX"
+"XL"
+"LX"
+"LX"
+"XL"
+"LLR"
+"RRL"
+"X"
+"L"
+
+
 
 
 // Time Complexity: O(n).  
@@ -112,3 +130,49 @@ public:
         return true;														// If no issues found, return true.
     }
 };
+
+
+
+
+
+
+
+//************************************************************Solution 2:************************************************************
+//*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
+// Time Complexity: O(n).
+// Space Complexity: O(1).	
+// This algorithm is observation based. Here 'L' chars moves to left side, 'R' char moves onto right side. L, R can't roll over each other, so one
+// observation is that #L or #R in sequence has to be same.So, we will iterate over both the strings and get the indices of non-'X' in both the 
+// strings, if they are different chars, we return false. If they are same, the chars are 'L' and start index is <end index, as curr 'X' in start
+// can't move to right, we return false. If char are 'R' and start index>end index, as 'R' can't move to Left to end index position, we return false.
+// When one of the iterators reach the end, we exit the loop, outside the loop, we try to find the next non-'X' index in the other string, if we
+// can find one, we return false, if not we return true.
+
+
+
+
+
+
+
+class Solution {
+public:
+    bool canTransform(string start, string end) {
+        int i=0, j=0;
+        while(i<start.length() && j<end.length()){							// Iterating over both the strings.
+            if(start[i]=='X') i++;											// Skipping 'X's in start string.
+            else if(end[j]=='X') j++;										// Skipping 'X' in end string.
+            else{
+                if(start[i]=='L' && end[j]=='R') return false;
+                if(start[i]=='R' && end[j]=='L') return false;
+				// Comparing non-'X's from both the strings.
+                if((start[i]=='L' && i<j) || (start[i]=='R' && i>j)) return false;
+                i++;
+                j++;
+            }
+        }
+        while(i<start.length() && start[i]=='X') i++;						// Finding non-'X' in the other string.
+        while(j<end.length() && end[j]=='X') j++;							// Finding non-'X' in the other string.
+        if(i<start.length() ^ j<end.length()) return false;					// If there is a unmatched non-'X' in only one of the string, return false.
+        return true;														// All non-'X's in both the strings are matched.
+    }
+}; 
