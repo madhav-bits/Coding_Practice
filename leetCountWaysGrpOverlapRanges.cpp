@@ -19,7 +19,7 @@ https://leetcode.com/problems/count-ways-to-group-overlapping-ranges/
 
 
 // Time Complexity: O(nlogn).  
-// Space Complexity: O(n).
+// Space Complexity: O(1).
 
 //********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
 
@@ -28,7 +28,7 @@ https://leetcode.com/problems/count-ways-to-group-overlapping-ranges/
 //************************************************************Solution 1:************************************************************
 //*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
 // Time Complexity: O(nlogn).
-// Space Complexity: O(n).	
+// Space Complexity: O(1).	
 // This algorithm is Sorting based. Here, first we sort the provided ranges based on start values, which would be useful in grouping the overlapping ranges. While iterating we track the close 
 // value of the curr. set of overlapping ranges, when we reach a range whose start>curr. set close value, we multiply curr. overlapping range's two possibilities to final result and start a new 
 // overlapping range as all the following ranges would start after the curr. range thus prev. closed overlapping range won't be affected anymore. Thus as the end of iter. we return the final result
