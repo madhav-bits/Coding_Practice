@@ -31,11 +31,12 @@ https://leetcode.com/problems/two-furthest-houses-with-different-colors/
 //*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
 // Time Complexity: O(n).
 // Space Complexity: O(1).	
-// This algorithm is Greedy based. If last houses on both sides are of diff. they would be answer, else means both have same color, so we try to find the first non-last color index from left, right
+// This algorithm is Greedy based. If last houses on both sides are of diff. they would be answer, else means both have same color, so we try to find the first diff. color indices from left, right sides. We calc. their dist.
+// from both the sides and return the max. of them.
 
 
 
-
+// I was quite lazy while thinking through the problem, but sln was intuitive and a good one.
 
 
 
