@@ -35,7 +35,10 @@ https://leetcode.com/problems/determine-if-two-events-have-conflict/
 // Space Complexity: O(1).	
 // This algorithm is comparison based. We check for overlapping condition and return true if overlaps else return false.
 
-
+// There are two ways to check overlap of two intervals.
+// 1. Max(start1, start2)<=Min(End1, End2)
+// 2. Observe the opposites(i.e start1, end2 pair and start2, end1 pair) of two intervals, we observe that
+// start1<=end2 && end1>=start2     The two pairs have alternating signs for two ends of an interval.
 
 
 
