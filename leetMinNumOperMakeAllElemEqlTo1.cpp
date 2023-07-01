@@ -41,6 +41,12 @@ https://leetcode.com/problems/minimum-number-of-operations-to-make-all-array-ele
 
 
 
+// gcd(a, b)-gcd of two nums can be observed as returning product of common factors b/w two numbers.
+// gcd(a,b,c,d,e) of multiple nums is nothing but product of common factors of all the nums. As factors are common b/w all of them, the order of gcds(x, y) 
+// doesn't matter, we eventually get same set of common factors, that is gcd of group of nums is associative in nature.
+
+
+
 
 
 
