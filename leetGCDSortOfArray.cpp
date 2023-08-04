@@ -18,8 +18,8 @@ https://leetcode.com/problems/gcd-sort-of-an-array/
 
 
 
-// Time Complexity: O(n!).  
-// Space Complexity: O(n*n!).
+// Time Complexity: O(n+n*logm+m).											// Solution: 2 has the best Time and Space complexity.
+// Space Complexity: O(m).	
 
 //********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
 
