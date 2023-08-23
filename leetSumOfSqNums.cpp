@@ -47,8 +47,8 @@ Output: False
 
 
 
-// Time Complexity: O(logn).  
-// Space Complexity: O(1).
+// Time Complexity: O(logn+sqrt(n)).
+// Space Complexity: O(1).	
 
 //********************************************************THIS IS LEET ACCEPTED CODE.***************************************************
 
@@ -56,10 +56,10 @@ Output: False
 
 //************************************************************Solution 1:************************************************************
 //*****************************************************THIS IS LEET ACCEPTED CODE.***********************************************
-// Time Complexity: O(logn).
+// Time Complexity: O(logn+sqrt(n)).
 // Space Complexity: O(1).	
-// This algorithm is Binary Search based. As, we need a pair of numbers, we get the maxm. of nums allowed as answer(sqrt(num)). Then, we do a 
-// Binary search on this pair.
+// This algorithm is Two Pointer based. As, we need a pair of numbers, we get the maxm. of nums allowed as answer(sqrt(num)). Then, we do a 
+// two pointer method and iterate from both ends to find any pair of nums whose squares add up to target.
 
 
 
@@ -74,8 +74,8 @@ public:
         int i=0,j=sqrt(c);
         // cout<<"floor: "<<(j)<<endl;
         if(j*j==c) return true;												// Checking if given num is perfect square.
-        while(i<=j){														// Binary Search loop.
-            int sum=(i*i)+(j*j);											// Sum of squares of pair of numbers.
+        while(i<=j){														// Two pointer loop.
+            long long int sum=(1ll*i*i)+(1ll&j*j);							// Sum of squares of pair of numbers.
             if(sum==c) return true;											// If sum is obtained, return true.
             if(sum<c) i++;													// If sum is less, we inc. the lower value.
             else j--;														// If sum is greater, we dec. the higher value.
