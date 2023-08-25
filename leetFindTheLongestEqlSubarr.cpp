@@ -40,11 +40,21 @@ https://leetcode.com/problems/find-the-longest-equal-subarray/
 // meets the condition, since maxFreq is updated with the latest valid value and len var is valid always, as now all parameters are valid and window is 
 // valid now, so we can try to update res now.
 
+//*********************************************************************************************************************************************************
+//**************************************************************IMPORTANT INTUITION HELPER.****************************************************************
+//*********************************************************************************************************************************************************
+// Generally in Sliding Window problems once we don't meet the condition upon extending the window, as we can't extend the window further, we remove indices 
+// from front as they can't be part of window anymore until the window meets the condition. In case we are not able to easily determine whether we meet the 
+// condition after removing the indices from the front, then we use this mechanism where we only remove one index from the front if we doesn't meet condition,
+// in which case the window may/maynot satisfy the condition now and it won't be able to improve the res(length, maxFreq in window). But the next time there is 
+// improvement in res, it would be based on proper valid values and the window would be completely valid then. 
 
 
 
 // This discussion forum link has some description and links to other similar questions.
 // https://leetcode.com/problems/find-the-longest-equal-subarray/discuss/3934172/JavaC++Python-One-Pass-Sliding-Window-O(n)
+
+
 
 
 
