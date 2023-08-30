@@ -29,7 +29,8 @@ https://leetcode.com/problems/magnetic-force-between-two-balls/
 // Time Complexity: O(nlogn+nlogm).											// n-#elem. in array, m-#largest possible gap b/w balls.
 // Space Complexity: O(1).	
 // This algorithm is Binary Search based. Here, we do Bin. Search in the range of possible gaps with the given balls. If all alls can be placed
-// with curr. gap, we look in upper half for largest gaps where balls can be placed. Else, we place in lower half looking for smaller gaps.
+// with curr. gap, we look in upper half for largest gaps where balls can be placed. Else, we search in lower half looking for smaller gaps. We also track 
+// the largest gap that satisfied the condition in the process and return the res at the end of iter.
 
 
 
